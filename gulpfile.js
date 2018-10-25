@@ -1,34 +1,22 @@
 var gulp = require('gulp'),
     gulpSass = require('gulp-sass'),
     prefix = require('gulp-autoprefixer'),
-    gulpPug = require('gulp-pug'),
     browserSync = require('browser-sync').create();
+
 // caminhos
 var paths = {
-    public: "./www/",
-    pug: "./pug/",
     sass: "./sass/",
-    css: "./www/assets/css/",
-    build: "./build/",
-    assets: "./www/assets/"
+    css: "../assets/css/",
+    assets: "./assets/",
+    compAssets: "../assets/"
 }
+
 // Assets
 gulp.task('assets', function(){
-    return gulp.src(paths.build + '**/*.*')
-        .pipe(gulp.dest(paths.assets));
+    return gulp.src(paths.assets + '**/*.*')
+        .pipe(gulp.dest(paths.compAssets));
     })
-// pug
-gulp.task('pug', function () {
-return gulp.src(paths.pug + '*.pug')
-    .pipe(gulpPug({
-        pretty: true
-    }))
-    .on('error', function (err) {
-    process.stderr.write(err.message + '\n');
-    this.emit('end');
-    })
-    .pipe(gulp.dest(paths.public));
-});
+
 // sass
 gulp.task('sass', function () {
 return gulp.src(paths.sass + '*.sass')
@@ -46,23 +34,23 @@ return gulp.src(paths.sass + '*.sass')
         stream: true
     }));
 });
+
 // browsersync
-gulp.task('server', ['sass', 'pug'], function () {
+gulp.task('server', ['sass'], function () {
 browserSync.init({
-    server: {
-        baseDir: paths.public
-        },
-        notify: false
+    proxy: "opencharity.dd:8083",
+    notify: false
     });
 });
-gulp.task('build', ['sass', 'pug']);
-gulp.task('rebuild', ['pug'], function () {
+
+gulp.task('build', ['sass']);
+
+gulp.task('rebuild', function () {
     browserSync.reload();
 });
-gulp.task('watch', function () {
-    gulp.watch(paths.sass + '**/*.sass', ['sass']);
-    gulp.watch('./pug/**/*.pug', ['rebuild']);
-});
 
+gulp.task('watch', function () {
+    gulp.watch(paths.sass + '**/*.sass', ['sass', 'rebuild']);
+});
 
 gulp.task('default',['assets', 'server', 'watch'] )
