@@ -1,0 +1,57 @@
+.row
+    display: flex
+    flex-wrap: wrap
+
+// .flex-center
+//     display: flex
+//     align-items: center
+//     justify-content: center
+
+// .grid
+//     display: grid
+//     place-items: center
+
+
+@for $i from 1 through $grid1
+    .col-#{$i}-#{$grid1}
+        @extend %grid-item
+        max-width: 100% / $grid1 * $i
+        flex: 0 0 100% / $grid1 * $i - 2%
+    .offset-#{$i}-#{$grid1}
+        margin-left: 100% / $grid1 * $i
+@for $i from 1 through $grid2
+    .col-#{$i}-#{$grid2}
+        @extend %grid-item
+        max-width: 100% / $grid2 * $i
+        flex: 0 0 100% / $grid2 * $i - 2%
+    .offset-#{$i}-#{$grid2}
+        margin-left: 100% / $grid2 * $i
+@for $i from 1 through $grid3
+    .col-#{$i}-#{$grid3}
+        @extend %grid-item
+        max-width: 100% / $grid3 * $i
+        flex: 0 0 100% / $grid3 * $i - 2%
+    .offset-#{$i}-#{$grid3}
+        margin-left: 100% / $grid3 * $i
+@for $i from 1 through $grid4
+    .col-#{$i}-#{$grid4}
+        @extend %grid-item
+        max-width: 100% / $grid4 * $i
+        flex: 0 0 100% / $grid4 * $i - 2%
+    .offset-#{$i}-#{$grid4}
+        margin-left: 100% / $grid4 * $i
+@for $i from 1 through $grid5
+    .col-#{$i}-#{$grid5}
+        @extend %grid-item
+        max-width: 100% / $grid5 * $i
+        flex: 0 0 100% / $grid5 * $i - 2%
+    .offset-#{$i}-#{$grid5}
+        margin-left: 100% / $grid5 * $i
+@for $i from 1 through $grid6
+    .col-#{$i}-#{$grid6}
+        @extend %grid-item
+        max-width: 100% / $grid6 * $i
+        flex: 0 0 100% / $grid6 * $i - 2%
+    .offset-#{$i}-#{$grid6}
+        margin-left: 100% / $grid6 * $i
+    

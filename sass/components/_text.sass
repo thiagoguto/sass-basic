@@ -1,0 +1,39 @@
+h1, h2, h3, h4, h5, h6 
+    margin: 0 0 16px 0
+    font-family: $heading-font-family
+    font-weight: $heading-font-weight
+    color: $heading-font-color
+    text-transform: $heading-text-transform
+    @if(mixin-exists(hook-heading)) 
+        @include hook-heading()
+
+* + h1, * + h2, * + h3, * + h4, * + h5, * + h6   
+    margin-top: 12px
+
+$font-size: 6
+@for $i from 1 through $font-size    
+    h#{$i}
+        font-size: ($heading-font-size + (2 / $i)) / 2
+        line-height: ($heading-line-height)
+.text-light
+    color: rgba(255,255,255,0.7) !important
+.text-left 
+    text-align: left !important
+.text-right 
+    text-align: right !important
+.text-center 
+    text-align: center !important
+.text-justify 
+    text-align: justify !important
+.text-hero
+    font-size: $hero-font-size
+    line-height: $hero-line-height
+    font-family: $hero-font-family
+    color: $hero-font-color
+.title-hero
+    font-size: $hero-font-size-heading
+    font-family: $hero-font-family-heading
+    line-height: $hero-line-height
+    color: $hero-font-color
+
+

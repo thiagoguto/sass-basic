@@ -1,0 +1,38 @@
+.navbar
+    font-family: $navbar-font-family
+    padding-top: 10px
+    padding-bottom: 10px
+    line-height: $navbar-line-height
+    height: 60px
+    
+.brand
+    a
+        padding: 12px 0 
+        @extend %align-left
+    img
+        width: 165px
+        @extend %align-left
+.navbar-menu
+    display: inline-flex
+    float: right 
+    line-height: 4
+    text-transform: $navbar-text-transform
+    a
+        color: #575656
+        font-size: $navbar-font-size
+        font-family: $navbar-font-family
+        padding: 10px 16px
+        text-decoration: none
+    li.last
+        a
+            color: #69C0BD
+            font-size: 0.9rem
+            border-radius: 2px
+            margin-left: 16px
+            padding-left: 23px
+            padding-right: 23px 
+            border: 1px solid  #69C0BD
+        
+    li.active
+        a
+            color: #69C0BD
